@@ -11,7 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111005134528) do
+ActiveRecord::Schema.define(:version => 20111005135758) do
+
+  create_table "devices", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "product_devices", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "product_id"
+    t.integer  "device_id"
+  end
+
+  add_index "product_devices", ["device_id"], :name => "index_product_devices_on_device_id"
+  add_index "product_devices", ["product_id"], :name => "index_product_devices_on_product_id"
+
+  create_table "products", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "crypted_password",          :limit => 40
