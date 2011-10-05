@@ -7,8 +7,10 @@ class Device < ActiveRecord::Base
     timestamps
   end
 
-  has_many :products, :through => :product_devices
+  has_many :products, :through => :product_devices, :accessible => true
   has_many :product_devices, :dependent => :destroy
+
+  children :products
 
   # --- Permissions --- #
 
