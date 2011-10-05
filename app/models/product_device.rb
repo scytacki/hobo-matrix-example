@@ -6,6 +6,9 @@ class ProductDevice < ActiveRecord::Base
     timestamps
   end
 
+  belongs_to :product
+  belongs_to :device
+
   # --- Permissions --- #
 
   def create_permitted?

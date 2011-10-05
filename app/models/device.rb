@@ -3,8 +3,12 @@ class Device < ActiveRecord::Base
   hobo_model # Don't put anything above this
 
   fields do
+    name       :string
     timestamps
   end
+
+  has_many :products, :through => :product_devices
+  has_many :product_devices, :dependent => :destroy
 
   # --- Permissions --- #
 
