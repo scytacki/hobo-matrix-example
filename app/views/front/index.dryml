@@ -24,6 +24,22 @@
     </header>
 
     <section class="content-body">
+      <% products = Product.find :all
+         devices = Device.find :all
+      %>
+      <table class='matrix-table'>
+        <thead>
+          <th></th>
+          <th repeat="&products"><view/></th>
+        </thead>
+        <tbody>
+          <tr repeat="&devices">
+            <% device_products = this.products %>
+            <td><view/></td>
+            <td repeat="&products"><if test="&device_products.include? this">X</if></td>
+          </tr>
+        </tbody>
+      </table>
     </section>
   </content:>
 
